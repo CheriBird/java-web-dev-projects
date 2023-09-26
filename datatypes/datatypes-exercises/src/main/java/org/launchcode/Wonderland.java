@@ -11,26 +11,35 @@ public class Wonderland {
                 "‘without pictures or conversation?’";
         Boolean found = false;
 
-        Scanner input = new Scanner(System.in);
+        // prompt user for a term to search for within the string
+        Scanner searchTxt = new Scanner(System.in);
         System.out.println("Enter the search text:");
-        String SearchText = input.nextLine();
+        String txt = searchTxt.nextLine();
 
-        System.out.println("You searched for: " + SearchText);
-        if (quote.toLowerCase().contains(SearchText.toLowerCase())) {
-            System.out.println("Search text '" + SearchText + "' was found!");
-            // print out the index within the string and its length
-            int location = quote.toLowerCase().indexOf(SearchText.toLowerCase());
-            int searchLength = SearchText.length();
-            System.out.println("Search text '" + SearchText + "' is " + searchLength + " characters long and was found at index " + location + ".");
-            // Remove the word from the string and print the sentence again
-            String newQuote = quote.substring(0, location) + quote.substring(location + searchLength);
-            System.out.println(newQuote);
+//      Make search case-insensitive
+        boolean result = quote.toLowerCase().contains(txt.toLowerCase());
 
-            System.out.println("\nReplace method used:");
-            String newQuote2 = quote.replace(SearchText, "");
-            System.out.println(newQuote2);
+//        print whether the search term was found
+        if (result) {
+            System.out.println("'" + txt + "' was found in the Wonderland text: " + result);
+
+            // Print the index and length of where the text was found
+            int location = quote.toLowerCase().indexOf(txt.toLowerCase());
+            int length = txt.length();
+            System.out.println("Search text '" + txt + "' starts at character: " + (location + 1) + " and" +
+                    " is " + length + " characters.");
+
+            // Remove the word/text from the main string and print the sentence
+            System.out.println(quote.substring(location + length));
+            String newQuote = quote.substring(0, location) + quote.substring(location + length);
+            System.out.println("The revised sentence is:\n" + newQuote);
+
+//            System.out.println("\nReplace method used:");   // this replaces ALL occurrences; not just the first one
+//            String newQuote2 = quote.replace(txt, "");
+//            System.out.println(newQuote2);
+
         } else {
-            System.out.println("Search text " + SearchText + " was not found.");
+            System.out.println("'" + txt + "' was not found in the Wonderland text.");
         }
     }
 }

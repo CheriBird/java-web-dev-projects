@@ -17,8 +17,8 @@ public class MilesPerGallon {
         System.out.println("How many gallons of gas were consumed?");
 //        Double Gallons = inputGallons.nextDouble();
         Double Gallons = input.nextDouble();
-        Double MPG = Miles / Gallons;
-        System.out.println("Your Miles Per Gallon (MPG) were: " + MPG);
+        double mpg = Miles / Gallons;
+        System.out.println("Your Miles Per Gallon (MPG) were: " + mpg);
 
 //        inputMiles.close();
 //        inputGallons.close();
